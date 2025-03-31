@@ -536,7 +536,31 @@
     </style>
 </head>
 <body>
-    
+    <div class="top-nav">
+        <div class="nav-left">
+            <img src="avatars/logo.jpg" alt="平台logo" class="platform-logo">
+            <div class="platform-title">遥感大模型实践创新平台</div>
+            <ul class="nav-menu">
+                <li><a href="#">平台资源</a></li>
+                <li><a href="#">数据检索</a></li>
+                <li><a href="#">任务管理</a></li>
+                <li><a href="#">模型推理</a></li>
+                <li><a href="#">模型学习</a></li>
+                <li><a href="#">实习实训</a></li>
+                <li><a href="#" class="active">学科问答</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <div class="search-box">
+                <input type="text" placeholder="输入搜索内容">
+                <button>🔍</button>
+            </div>
+            <div class="user-info">
+                <span>用户20213021</span>
+            </div>
+        </div>
+    </div>
     
     <div class="container">
         <header>
@@ -548,9 +572,12 @@
         </header>
         
         <div class="intro-container" id="introContainer">
-            <div class="intro-title">讨论问题：</div>
+            <div class="intro-title">预习任务：</div>
             <div class="intro-content">
-                如何利用遥感视觉基础模型，实现西藏地震快速灾害评估与辅助救援?<br>
+                请阅读教材第三章关于"人工智能在教育中的应用"部分，并回答以下问题：<br>
+                1. 人工智能如何改变个性化学习体验？<br>
+                2. 教师在AI辅助教学中的角色将如何转变？<br>
+                3. 你认为AI在教育中应用的最大挑战是什么？
             </div>
         </div>
         
@@ -561,7 +588,7 @@
         <div class="ai-process" id="aiProcess">
             <div class="ai-title">大模型智能分组</div>
             <div class="ai-step-content" style="padding-left: 0; border-left: none; margin-bottom: 15px;">
-                大模型根据学生预习答题的得分情况，自动将学生分为不同的学习小组，确保各组学习效果最优。
+                大模型根据学生预习答题的得分情况与综合素质，自动将学生分为不同的学习小组，确保各组学习效果最优。
             </div>
         </div>
         
@@ -604,26 +631,30 @@
             { id: "2023302131081", name: "许安然", avatar: "avatars/17.jpg", score: 77 },
             { id: "2023302131115", name: "徐豪", avatar: "avatars/18.jpg", score: 88 },
             { id: "2023302131195", name: "张馨怡", avatar: "avatars/19.jpg", score: 88 },
-            { id: "2023302131211", name: "文诗语", avatar: "avatars/20.jpg", score: 80 }
+            { id: "2023302131211", name: "文诗语", avatar: "avatars/20.jpg", score: 80 },
+            { id: "2023302131215", name: "范一唱", avatar: "avatars/21.jpg", score: 85 },
+            { id: "2023302131268", name: "汪柳", avatar: "avatars/22.jpg", score: 88 },
+            { id: "2023302131315", name: "刘诺珈", avatar: "avatars/23.jpg", score: 92 },
+            { id: "2021302131088", name: "邱盛广", avatar: "avatars/24.jpg", score: 76 },
         ];
         
         // 预定义的分组结果
         const groups = [
             {
                 id: 1,
-                members: ["2023302131134", "2023302131284", "2023302131142", "2023302131196", "2023302131328"]
+                members: ["2023302131134", "2023302131284", "2023302131142", "2023302131196", "2023302131328", "2023302131215"]
             },
             {
                 id: 2,
-                members: ["2023302131309", "2023302131026", "2023302131299", "2023302131115", "2023302131195"]
+                members: ["2023302131309", "2023302131026", "2023302131299", "2023302131115", "2023302131195", "2023302131268"]
             },
             {
                 id: 3,
-                members: ["2023302131326", "2023302131050", "2023302131172", "2023302131068", "2023302131211"]
+                members: ["2023302131326", "2023302131050", "2023302131172", "2023302131068", "2023302131211", "2023302131315"]
             },
             {
                 id: 4,
-                members: ["2023302131071", "2023312131002", "2023302131151", "2023302131235", "2023302131081"]
+                members: ["2023302131071", "2023312131002", "2023302131151", "2023302131235", "2023302131081", "2021302131088"]
             }
         ];
         
@@ -656,7 +687,15 @@
                             <div class="student-id">${student.id}</div>
                         </div>
                     </div>
-                    
+                    <div class="answer-status">
+                        <div class="answer-item">
+                            <span class="answer-label">得分：</span>
+                            <span class="answer-value ${scoreClass}">${student.score}</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${student.score}%"></div>
+                        </div>
+                    </div>
                 `;
                 
                 studentsContainer.appendChild(card);
